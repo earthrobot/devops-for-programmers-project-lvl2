@@ -2,3 +2,14 @@ postgres_host: "88.80.185.99"
 postgres_db: "{{ vault_postgres_db }}"
 postgres_user: "{{ vault_postgres_user }}"
 postgres_password: "{{ vault_postgres_password }}"
+
+datadog_site: "datadoghq.com"
+datadog_api_key: "{{ vault_datadog_api_key }}"
+datadog_checks:
+  http_check:
+    init_config:
+    instances:
+      - name: oceandev.space linodes check
+        url: "http://localhost:80"
+        timeout: 5
+        method: GET

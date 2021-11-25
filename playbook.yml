@@ -36,9 +36,9 @@
         pull: yes
         env_file: .env
 
-# - hosts: all
-#   remote_user: root
-#   tasks:
-#     - name: Run datadog
-#       include_role:
-#         name: datadog.datadog
+- hosts: webservers
+  remote_user: root
+  tasks:
+    - name: Run datadog
+      include_role:
+        name: datadog.datadog
