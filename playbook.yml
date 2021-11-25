@@ -4,9 +4,6 @@
   gather_facts: yes
   remote_user: root
   tasks:
-    - name: Install docker
-      include_role:
-        name: geerlingguy.docker
 
     - name: Install packages
       ansible.builtin.apt:
