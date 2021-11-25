@@ -1,1 +1,4 @@
-some_var: "{{ vault_some_var }}"
+postgres_host: "88.80.185.99"
+postgres_db: "{{ vault_postgres_db }}"
+postgres_user: "{{ vault_postgres_user }}"
+postgres_password: "{{ vault_postgres_password }}"

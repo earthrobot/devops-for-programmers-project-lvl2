@@ -19,10 +19,10 @@
 
     - name: Template a file to .env
       ansible.builtin.template:
-          src: .env.example
+          src: env.j2
           dest: .env
-          owner: root
-          group: root
+          owner: "{{ ansible_user }}"
+          group: "{{ ansible_user }}"
           mode: '0644'
 
     - name: Run docker redmine
