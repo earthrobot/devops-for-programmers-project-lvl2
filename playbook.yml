@@ -1,0 +1,44 @@
+---
+
+- hosts: all
+  gather_facts: yes
+  remote_user: root
+  tasks:
+    - name: Install docker
+      include_role:
+        name: geerlingguy.docker
+
+    - name: Install packages
+      ansible.builtin.apt:
+        name: python3-pip
+        update_cache: yes
+
+    - name: Install Docker Module for Python
+      ansible.builtin.pip:
+        name: docker
+
+    - name: Template a file to .env
+      ansible.builtin.template:
+          src: .env.example
+          dest: .env
+          owner: root
+          group: root
+          mode: '0644'
+
+    - name: Run docker redmine
+      community.docker.docker_container:
+        name: redmine
+        image: redmine
+        published_ports: "80:3000"
+        restart_policy: always
+        restart: yes
+        container_default_behavior: no_defaults
+        pull: yes
+        env_file: .env
+
+# - hosts: all
+#   remote_user: root
+#   tasks:
+#     - name: Run datadog
+#       include_role:
+#         name: datadog.datadog
