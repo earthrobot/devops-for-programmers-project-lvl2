@@ -18,8 +18,6 @@
       ansible.builtin.template:
           src: env.j2
           dest: .env
-          owner: "{{ ansible_user }}"
-          group: "{{ ansible_user }}"
           mode: '0644'
 
     - name: Run docker redmine
