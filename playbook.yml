@@ -2,6 +2,7 @@
 
 - hosts: all
   gather_facts: yes
+  become: yes
   tasks:
 
     - name: Install packages
@@ -33,6 +34,7 @@
         env_file: .env
 
 - hosts: webservers
+  become: yes
   tasks:
     - name: Run datadog
       include_role:
