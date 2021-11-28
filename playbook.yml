@@ -2,7 +2,6 @@
 
 - hosts: all
   gather_facts: yes
-  remote_user: root
   tasks:
 
     - name: Install packages
@@ -34,7 +33,6 @@
         env_file: .env
 
 - hosts: webservers
-  remote_user: root
   tasks:
     - name: Run datadog
       include_role:
